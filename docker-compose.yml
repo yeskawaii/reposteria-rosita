@@ -1,20 +1,15 @@
-version: '3.8'
+name: reposteria-rosita
 
 services:
-  pasteleria_frontend:
-    build:
-      context: .
-      dockerfile: Dockerfile
+  frontend:
+    build: .
     container_name: pasteleria_frontend
-    # Usamos expose para abrir el puerto solo a los contenedores dentro de la red proxy-network
-    # Cero uso de 'ports' hacia el host para evitar choques
+    restart: unless-stopped
     expose:
       - "80"
     networks:
       - proxy-network
-    restart: unless-stopped
 
 networks:
-  # Definimos la red externa para que Traefik, Nginx Proxy Manager o tu Proxy Inverso lo detecten
   proxy-network:
     external: true
