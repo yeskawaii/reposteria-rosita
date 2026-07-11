@@ -7,3 +7,13 @@
     @apply bg-bakery-vanilla text-bakery-dark font-sans antialiased;
   }
 }
+
+@layer utilities {
+  .animate-slide-in-right {
+    animation: slideInRight 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  @keyframes slideInRight {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+  }
+}
